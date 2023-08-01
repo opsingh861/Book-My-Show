@@ -44,8 +44,8 @@ const HeroCarousel = () => {
     infinite: true,
     speed: 500,
     slideToScroll: 1,
-    nextArrow: <NextArrow/>,
-    prevArrow: <PrevArrow/>
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   }
   const settingLG = {
     arrows: true,
@@ -53,15 +53,19 @@ const HeroCarousel = () => {
     infinite: true,
     speed: 500,
     slideToScroll: 1,
-    nextArrow: <NextArrow/>,
-    prevArrow: <PrevArrow/>
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
   }
   return (
     <>
       <div className="lg:hidden">
         <HeroSlider {...setting} >
           {images.map((images, index) => (
-            <div className="w-full h-56 md:h-80 py-3">
+            <div className="w-full h-56 md:h-80 py-3" key={index}>
               <img
                 src={`https://image.tmdb.org/t/p/original${images.backdrop_path}`}
                 alt="Hero Banner"
@@ -74,7 +78,7 @@ const HeroCarousel = () => {
       <div className="hidden lg:block">
         <HeroSlider {...settingLG}>
           {images.map((images, index) => (
-            <div className="w-full px-2 py-3" id='goku'>
+            <div className="w-full px-2 py-3" key={index}>
               <img
                 src={`https://image.tmdb.org/t/p/original${images.backdrop_path}`}
                 alt="Hero Banner"

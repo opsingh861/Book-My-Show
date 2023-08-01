@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 // components
-import EntertainmentCardSlider from "../components/Entertainment/EntertainmentCard.Component"
+import EntertainmentCardSlider from '../components/Entertainment/EntertainmentCard.Component'
 import HeroCarousel from "../components/HeroCarousel/HeroCarousel.Component"
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component"
 
@@ -11,6 +11,15 @@ const HomePage = () => {
     const [recommendedMovies, setRecommendedMovies] = useState([])
     const [premierMovies, setPremierMovies] = useState([])
     const [onlineStreamEvents, setOnlineStreamEvents] = useState([])
+
+    useEffect(() => {
+        const requestTopRatedMovies = async () => {
+            const getTopRatedMovies = await axios.get(
+                "https://api.themoviedb.org/3/movie/top_rated?api_key=325a7e1158eeda67e81806b55be135f7")
+            setRecommendedMovies(getTopRatedMovies.data.results)
+        }
+        requestTopRatedMovies()
+    }, [])
     return (
         <>
             <HeroCarousel />
@@ -21,7 +30,7 @@ const HomePage = () => {
 
             <div className='container mx-auto px-4 md:px-12 my-8'>
                 <PosterSlider title="Recomended movies"
-                    subject="List of recomended movies" posters={recommendedMovies}
+                    subtitle="List of recomended movies" posters={recommendedMovies}
                     isDark={false} />
             </div>
             <div className='bg-premier-800 py-12'>
@@ -32,14 +41,14 @@ const HomePage = () => {
                             alt="Rupay" className='w-full h-full' />
                     </div>
                     <PosterSlider title="Premiers"
-                        subject="Brand new releases every Friday"
+                        subtitle="Brand new releases every Friday"
                         posters={premierMovies} isDark={true} />
                 </div>
             </div>
             <div>
                 <PosterSlider title="Online Streaming Event"
-                    subject=""
-                    posters={onlineStreamEvents} isDark={true} />
+                    subtitle=""
+                    posters={onlineStreamEvents} isDark={false} />
             </div>
         </>
     )
