@@ -13,12 +13,28 @@ const HomePage = () => {
     const [onlineStreamEvents, setOnlineStreamEvents] = useState([])
 
     useEffect(() => {
+        const requestPopularMovies = async () => {
+            const getPopularMovies = await axios.get(
+                "/movie/popular")
+            setRecommendedMovies(getPopularMovies.data.results)
+        }
+        requestPopularMovies()
+    }, [])
+    useEffect(() => {
         const requestTopRatedMovies = async () => {
             const getTopRatedMovies = await axios.get(
-                "https://api.themoviedb.org/3/movie/top_rated?api_key=325a7e1158eeda67e81806b55be135f7")
-            setRecommendedMovies(getTopRatedMovies.data.results)
+                "/movie/top_rated")
+            setPremierMovies(getTopRatedMovies.data.results)
         }
         requestTopRatedMovies()
+    }, [])
+    useEffect(() => {
+        const requestOnlineStreamEvents = async () => {
+            const getOnlineStreamEvents = await axios.get(
+                "/movie/upcoming")
+            setOnlineStreamEvents(getOnlineStreamEvents.data.results)
+        }
+        requestOnlineStreamEvents()
     }, [])
     return (
         <>
