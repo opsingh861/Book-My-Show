@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
 import MovieHero from "../components/MovieHero/MovieHero.Component";
+import Cast from "../components/cast/Cast.Component";
 const MoviePage = () => {
   const { id } = useParams();
   const { movie, setMovie } = useContext(MovieContext);
@@ -87,7 +88,7 @@ const MoviePage = () => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
@@ -120,7 +121,7 @@ const MoviePage = () => {
   return (
     <>
       <MovieHero />
-      <div className="my-12 container px-4 lg-ml-20">
+      <div className="my-12 container px-4 lg-ml-20 lg:w-2/3">
         <div className="flex flex-col items-start gap-3">
           <h1 className="text-gray-800 font-bold text-2xl">About the movie</h1>
           <p>{movie.overview}</p>
@@ -169,7 +170,20 @@ const MoviePage = () => {
         </div>
 
         {/* Cast Slider */}
-
+        <div className="my-8">
+          <h2 className="text-gray-800 font-bold text-2xl mb-4">
+            Cast and Crew
+          </h2>
+          <Slider {...settingCast}>
+            {cast.map((castData) => (
+              <Cast
+                image={castData.profile_path}
+                castName={castData.original_name}
+                role={castData.character}
+              />
+            ))}
+          </Slider>
+        </div>
 
         <div className="my-8">
           <hr />
@@ -190,14 +204,12 @@ const MoviePage = () => {
         </div>
 
         {/* recommended movies slider */}
-        <div className="my-8">
-          <PosterSlider
-            config={settings}
-            title="BMS EXCLUSIVE"
-            posters={recommendedMovies}
-            isDark={false}
-          />
-        </div>
+        <PosterSlider
+          config={settings}
+          title="BMS XCLUSICE"
+          posters={recommendedMovies}
+          isDark={false}
+        />
       </div>
     </>
   );
