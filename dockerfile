@@ -4,6 +4,7 @@ FROM node:alpine3.18 as nodework
 WORKDIR /book-my-show
 COPY package.json .
 COPY . .
+RUN npm install
 RUN npm run build
 
 
