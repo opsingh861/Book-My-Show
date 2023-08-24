@@ -26,11 +26,11 @@ function NavMd() {
       <div className="flex items-center w-full gap-3">
         <div className="w-10 h-10">
           <Link to={"/"}>
-          <img
-            src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png"
-            alt="logo"
-            className="w-full h-full"
-          />
+            <img
+              src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png"
+              alt="logo"
+              className="w-full h-full"
+            />
           </Link>
 
         </div>
@@ -54,21 +54,21 @@ function NavLg() {
         <div className="flex items-center w-1/2 gap-3">
           <div className="w-10 h-10">
             <Link to={"/"}>
-            <img
-              src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png"
-              alt="logo"
-              className="w-full h-full"
-            />
+              <img
+                src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png"
+                alt="logo"
+                className="w-full h-full"
+              />
             </Link>
-        
+
           </div>
           <div className="w-full flex items-center gap-3 bg-white px-3 py-1 rounded-md">
             <BiSearch />
-            {/* <input
+            <input
               type="search"
               className="w-full bg-transparent border-none focus:outline-none"
               placeholder="Search for movies, events, plays, sports and activities"
-            /> */}
+            />
           </div>
         </div>
         <div className="flex items-center gap-3">
