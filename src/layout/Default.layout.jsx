@@ -6,7 +6,7 @@ const DefaultLayoutHoc = (Component) => ({ ...props }) => {
         <div>
             <Navbar />
             <Component {...props} />
-            <div>Footer</div>
+            {/* <div>Footer</div> */}
         </div>
     )
 }
